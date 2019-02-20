@@ -1,0 +1,23 @@
+{
+  "name": "bama",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bamacust.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dorothybelle247/bama.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dorothybelle247/bama/issues"
+  },
+  "homepage": "https://github.com/dorothybelle247/bama#readme",
+  "dependencies": {
+    "inquirer": "^6.2.2",
+    "mysql": "^2.16.0"
+  }
+}
