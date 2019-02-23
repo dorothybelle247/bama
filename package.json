@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/dorothybelle247/bama#readme",
   "dependencies": {
+    "colors": "^1.3.3",
+    "easy-table": "^1.1.1",
     "inquirer": "^6.2.2",
     "mysql": "^2.16.0"
   }
