@@ -5,23 +5,23 @@ var inquirer = require('inquirer');
 
 var Table = require('easy-table');
 
-var colors = require('colors');
+
 
 // var data =  'SELECT * FROM Products';
 
 var connection = mysql.createConnection({
-
-    host: "127.0.0.1",
-
+    host: "localhost",
+  
+    // Your port; if not 3306
     port: 3306,
-
-    user: "root", //Your username
-
-    password: "root", //Your password
-
-    database: "Bama"
-
-})
+  
+    // Your username
+    user: "root",
+  
+    // Your password
+    password: "root",
+    database: "greatbay_db"
+  });
 
 connection.connect(function(err) {
 
@@ -37,7 +37,7 @@ function start() {
 
     // Display all the products
 
-    var t = new Table;
+    var ew = new Table;
 
    
 
@@ -45,27 +45,24 @@ function start() {
 
         if (err) throw err;
 
-        console.log('\n<----------Welcome To the Bamazon! What would you like to buy?---------->\n' .magenta.bold);
+        console.log('\n<----------Buy something---------->\n' .magenta.bold);
 
 
 
         result.forEach(function(itemTable) {
 
-            t.cell('Product Id'.white , itemTable.ItemID)
+            ew.cell('Department Id'.blue , itemTable.DepartmentID)
 
-            t.cell('Product'.white , itemTable.ProductName)
+            ew.cell('Product'.blue , itemTable.ProductName)
 
-            t.cell('Department'.white , itemTable.DepartmentName)
+            ew.cell('Department Name'.blue , itemTable.DepartmentName)
 
-            t.cell('Price'.white, itemTable.Price)
-
-            t.cell('Quantity'.white, itemTable.StockQuantity)
-
-            t.newRow()
+            ew.cell('Price'.blue , itemTable.Price)
+            ew.newRow()
 
         });
 
-        console.log(t.toString());
+        console.log(ew.toString());
 
 
 
@@ -149,7 +146,7 @@ function start() {
 
             } else {
 
-                console.log("Sorry! Insufficient quantity!".red);
+                console.log("Wrong".red);
 
                 askAgain();
 
@@ -163,27 +160,56 @@ function start() {
 
 
 
+// var askForPostOrBid = function(){
+//     inquirer.prompt([
+//         {
+//             type: 'list',
+//             message: 'Would you like to post or bid or exit?',
+//             choices: ['POST', 'BID', 'EXIT'],
+//             name: 'choice'
+//         }
+//     ])
+//     .then(function(answers){
+//         console.log(answers.choice);
+//         switch(answers.choice){
+//             case 'BID':
+//                 bid();
+//                 break;
+//             case 'POST':
+//                 createAuction();
+//                 break;
+//             default:
+//                 connection.end();
+//                 break;
+//         }
+//     });
+// };
+
+
+
+
+
 
 
 function askAgain() {
 
     inquirer.prompt([{
 
-        name: "more",
+        name: "plus",
 
         type: "confirm",
 
-        message: "Would you like to buy another item?"
+        message: "Pick an item of your choice?"
 
     }]).then(function(pick) {
 
-        if (pick.more) {
+        if (pick.plus) {
 
             start();
 
         } else {
 
-            console.log("\nThank you for Shopping with us. See you soon!".red);
+            console.log("\nThank you for Shopping!".white);
 
         }
 
