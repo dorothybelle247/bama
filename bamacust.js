@@ -199,7 +199,7 @@ function askAgain() {
 
         type: "confirm",
 
-        message: "Pick an item of your choice?"
+        message: "Pick an item "
 
     }]).then(function(pick) {
 
